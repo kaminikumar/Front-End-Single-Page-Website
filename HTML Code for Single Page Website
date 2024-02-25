@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewellery Shop</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0; 
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #3d3d3d;
+      padding: 20px 0;
+    }
+    .header-logo {
+      color: #fff; 
+      font-size: 36px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .header-logo:hover {
+      color: #E59866;
+    }
+    .header-nav {
+      margin-top: 10px;
+    }
+    .header-nav .nav-item {
+      margin-right: 20px;
+    }
+    .header-nav .nav-link {
+      color: #fff;
+      font-size: 18px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    .header-nav .nav-link:hover {
+      color: #E59866;
+    }
+    .header-nav .nav-item.active .nav-link {
+      color: #E59866;
+    }
+    .header-nav .dropdown-menu .dropdown-item {
+      color: #333;
+      font-size: 16px;
+      text-transform: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .header-nav .dropdown-menu .dropdown-item:hover {
+      background-color: #E59866; 
+      color: #fff;
+    }
+    .header-toggler-icon {
+      background-color: #fff;
+    }
+    #home {
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUcPGL0fkPNKIMukmb3O_TRMeegxjqXxzJfg&usqp=CAU'); 
+      background-size: contain;
+      background-position: center;
+      color: #000;
+      padding: 100px 0;
+      text-align: center;
+    }
+    #home h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    #home .lead {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    #home .btn-primary {
+      background-color: #E59866;
+      border-color: #E59866;
+      font-size: 18px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    #home .btn-primary:hover {
+      background-color: #fff;
+      color: #E59866;
+    }
+    .about-us-section {
+      background-color: #f8f8f8;
+      padding: 80px 0;
+    }
+    .about-us-content {
+      text-align: center;
+    }
+    .about-us-content h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .about-us-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .about-us-content .btn-primary {
+      background-color: #E59866;
+      border-color: #E59866;
+      font-size: 18px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .about-us-content .btn-primary:hover {
+      background-color: #fff; 
+      color: #E59866;
+    }
+    .about-us-image img {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+    .section {
+      padding: 10px 0;
+    }
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .product {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .product h4 {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .product p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .product-image {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product {
+      background-color: #D6BFF7;
+      height: 450px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .product button.add-to-cart {
+      background-color: #E59866;
+      border-color: #E59866;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .product button.add-to-cart:hover {
+      background-color: #fff;
+      color: #E59866;
+    }
+    .modal-dialog {
+      max-width: 800px;
+    }
+    .modal-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .modal-body p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .modal-body ul {
+      list-style: disc;
+      margin-left: 20px;
+    }
+    .modal-body table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    .modal-body table th,
+    .modal-body table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    .bg-light {
+      background-color: #f8f8f8;
+    }
+    .text-center {
+      text-align: center;
+    }
+    #contact {
+      background-color: #f8f8f8;
+      padding: 50px 0;
+    }
+    .contact-form {
+      background-color: #BFF7F2;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .contact-form label {
+      font-weight: bold;
+    }
+    .cart-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .cart-item {
+      width: calc(33.33% - 20px);
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .cart-item .item-details {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-item .item-details img {
+      max-width: 100px;
+      height: auto;
+    }
+    .cart-item .item-info {
+      flex-grow: 1;
+    }
+    .cart-item h4 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .cart-item p {
+      margin: 0;
+      font-size: 16px;
+      color: #555;
+    }
+    .cart-item .item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-item .quantity-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      cursor: pointer;
+      outline: none;
+    }
+    .cart-item .quantity-button:hover {
+      background-color: #0056b3;
+    }
+    .cart-item .item-remove {
+      text-align: center;
+    }
+    .cart-item .remove-button {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      outline: none;
+    }
+    .cart-item .remove-button:hover {
+      background-color: #c82333;
+    }
+    .cart-total {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .cart-total h4 {
+      font-size: 24px;
+      margin: 0;
+    }
+    #user-details-modal .modal-dialog {
+      max-width: 400px;
+    }
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 30px 0;
+    }
+    .footer-info {
+      text-align: center;
+    }
+    .footer-social h3 {
+      text-align: center;
+    }
+    .social-icon {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a class="header-logo" href="#">Jewelry Shop</a>
+            </div>
+            <div class="col-md-6 text-right">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <button class="navbar-toggler header-toggler-icon" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse header-nav" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Add the appropriate classes to navigation links -->
+                            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jewels</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#gallery-rings">Rings</a>
+                                    <a class="dropdown-item" href="#gallery-bracelets">Bracelets</a>
+                                    <a class="dropdown-item" href="#gallery-necklaces">Necklaces</a>
+                                    <a class="dropdown-item" href="#gallery-earrings">Earrings</a>
+                                    <a class="dropdown-item" href="#gallery-tiaras">Tiaras</a>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#cart">Cart</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+  <section class="jumbotron text-center" id="home">
+    <div class="container">
+      <h1 class="display-4">Welcome to Our Jewelry Shop</h1>
+      <p class="lead">Discover exquisite jewelry pieces handcrafted with love.</p>
+      <p class="lead">Discover our stunning collection of jewelry crafted with love and passion.</p>
+      <a href="#products" class="btn btn-primary btn-lg">Explore Products</a>
+    </div>
+  </section>
+<section id="about-us" class="about-us-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="about-us-content">
+          <h2 class="section-title">About Us</h2>
+          <p>Welcome to Jewelry Shop, your ultimate destination for exquisite and handcrafted jewelry pieces. With a passion for timeless elegance and a commitment to exceptional craftsmanship, we have been serving jewelry enthusiasts like you for over two decades.</p>
+          <a href="#products" class="btn btn-primary">Discover Our Collections</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="about-us-image">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMETCiGqCzb_wJagmSVqWToIZMdV73F5k9jw&usqp=CAU" alt="About Us Image 1">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="products">
+    <div class="container">
+        <h2 class="text-center">Our Products</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx1LubqM0l5Vv7Hy4C39nbXfPrnejMXSCxOA&usqp=CAU" alt="Product 1" class="img-fluid product-image">
+                    <h3>Gold Jewelry</h3>
+                    <button class="btn btn-primary btn-block view-details" data-toggle="modal" data-target="#product1Modal">View Details</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIFfa0Lt9sA51urfANO5NYGtI6Y-kdSihTvQ&usqp=CAU" alt="Product 2" class="img-fluid product-image">
+                    <h3>Silver Jewelry</h3>
+                    <button class="btn btn-primary btn-block view-details" data-toggle="modal" data-target="#product2Modal">View Details</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS45M_tddy0RmBuAlgnbmZOIM_Xz1XFR4oxTWRAl_GXgWx-uaOhHHqq-cQgy3KDRwtHNOw&usqp=CAU" alt="Product 3" class="img-fluid product-image">
+                    <h3>Diamond Jewelry</h3>
+                    <button class="btn btn-primary btn-block view-details" data-toggle="modal" data-target="#product3Modal">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="product1Modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Gold Jewelry</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h5>About Our Gold Jewelry</h5>
+                <p>
+                    Our gold jewelry collection is a testament to craftsmanship and elegance. We offer a wide range of gold jewelry pieces, each crafted with the highest quality gold and attention to detail.
+                </p>
+                <p>Features of our Gold Jewelry:</p>
+                <ul>
+                    <li>Material: High-quality gold</li>
+                    <li>Design: Intricate and elegant</li>
+                    <li>Price Range: $100 - $5000</li>
+                </ul>
+                <p>
+                    Our gold jewelry is perfect for special occasions or as a statement piece for everyday wear. Explore our collection to find the perfect gold jewelry that suits your style and preferences.
+                </p>
+                <h3>Gold Prices</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Weight</th>
+                            <th>Gold Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0.1 Gram</td>
+                            <td>USD 3.77</td>
+                        </tr>
+                        <tr>
+                            <td>0.2 Gram</td>
+                            <td>USD 7.54</td>
+                        </tr>
+                        <tr>
+                            <td>1 Gram</td>
+                            <td>USD 37.70</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="product2Modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Silver Jewelry</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h5>About Our Silver Jewelry</h5>
+                <p>
+                    Our silver jewelry collection exudes elegance and style. Crafted with precision and attention to detail, our silver jewelry pieces are perfect for both casual and formal occasions.
+                </p>
+                <p>Features of our Silver Jewelry:</p>
+                <ul>
+                    <li>Material: High-quality silver</li>
+                    <li>Design: Stylish and versatile</li>
+                    <li>Price Range: $50 - $1000</li>
+                </ul>
+                <p>
+                    Explore our silver jewelry collection to find the ideal piece that complements your unique style and adds a touch of sophistication to your look.
+                </p>
+                <h3>Silver Prices</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Weight</th>
+                            <th>Silver Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0.1 Gram</td>
+                            <td>USD 0.47</td>
+                        </tr>
+                        <tr>
+                            <td>0.2 Gram</td>
+                            <td>USD 0.94</td>
+                        </tr>
+                        <tr>
+                            <td>1 Gram</td>
+                            <td>USD 4.70</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="product3Modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Diamond Jewelry</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h5>About Our Diamond Jewelry</h5>
+                <p>
+                    Our diamond jewelry collection is a symbol of luxury and sophistication. Each piece is adorned with exquisite diamonds, making it a perfect choice for special occasions and memorable moments.
+                </p>
+                <p>Features of our Diamond Jewelry:</p>
+                <ul>
+                    <li>Material: High-quality diamonds and precious metals</li>
+                    <li>Design: Glamorous and timeless</li>
+                    <li>Price Range: $500 - $10,000</li>
+                </ul>
+                <p>
+                    Explore our diamond jewelry collection to discover the brilliance and beauty that our diamonds bring to every piece.
+                </p>
+                <h3>Diamond Prices</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Weight</th>
+                            <th>Diamond Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 Carat</td>
+                            <td>USD 939.41</td>
+                        </tr>
+                        <tr>
+                            <td>0.5 Carat</td>
+                            <td>USD 469.71</td>
+                        </tr>
+                        <tr>
+                            <td>0.75 Carat</td>
+                            <td>USD 704.56</td>
+                        </tr>
+                        <tr>
+                            <td>0.25 Carat</td>
+                            <td>USD 234.85</td>
+                        </tr>
+                        <tr>
+                            <td>0.1 Carat</td>
+                            <td>USD 93.94</td>
+                        </tr>
+                        <tr>
+                            <td>0.2 Gram</td>
+                            <td>USD 939.41</td>
+                        </tr>
+                        <tr>
+                            <td>1 Gram</td>
+                            <td>USD 4,697.06</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section bg-light" id="gallery-rings">
+  <div class="container">
+    <h2 class="text-center">Rings</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ej0gTzH8gMw9tEacP-2J7NnmbQ9Nh9YoXA&usqp=CAU" alt="Ring 1" class="img-fluid product-image">
+          <h4>Gold Ring</h4>
+          <p>Stunning gold ring with diamonds.</p>
+          <p>Price: $500.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Gold Ring" data-price="500.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ej0gTzH8gMw9tEacP-2J7NnmbQ9Nh9YoXA&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoaZ5Brtazc6iLNE1EmKSURdlxeSgmp0RDww&usqp=CAU" alt="Ring 2" class="img-fluid product-image">
+          <h4>Silver Ring</h4>
+          <p>Elegant silver ring with a classic design.</p>
+          <p>Price: $350.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Silver Ring" data-price="350.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoaZ5Brtazc6iLNE1EmKSURdlxeSgmp0RDww&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgeZxXYqp1r22itYnZGv_fcF2seHPUZPkLCg&usqp=CAU" alt="Ring 3" class="img-fluid product-image">
+          <h4>Diamond Ring</h4>
+          <p>Luxurious diamond ring with a timeless appeal.</p>
+          <p>Price: $800.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Diamond Ring" data-price="800.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgeZxXYqp1r22itYnZGv_fcF2seHPUZPkLCg&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-light" id="gallery-bracelets">
+  <div class="container">
+    <h2 class="text-center">Bracelets</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwJWVZ8G6c51TIYPUcJHIL7xF7uYscbCbRA&usqp=CAU" alt="Bracelet 1" class="img-fluid product-image">
+          <h4>Gold Bracelet</h4>
+          <p>Luxurious gold bracelet with a modern twist.</p>
+          <p>Price: $400.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Gold Bracelet" data-price="400.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwJWVZ8G6c51TIYPUcJHIL7xF7uYscbCbRA&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0TmgziAxqT5y9hOE95tG_SrOURoYj2K2jpQ&usqp=CAU" alt="Bracelet 2" class="img-fluid product-image">
+          <h4>Silver Bracelet</h4>
+          <p>Elegant silver bracelet with intricate design.</p>
+          <p>Price: $250.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Silver Bracelet" data-price="250.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0TmgziAxqT5y9hOE95tG_SrOURoYj2K2jpQ&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://thumbs.dreamstime.com/b/amazing-silver-diamond-bracelet-black-background-fabulous-silver-diamond-bracelet-black-silk-background-282381157.jpg?w=992" alt="Bracelet 3" class="img-fluid product-image">
+          <h4>Diamond Bracelet</h4>
+          <p>Exquisite diamond bracelet for special occasions.</p>
+          <p>Price: $1,200.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Diamond Bracelet" data-price="1200.00" data-image="https://thumbs.dreamstime.com/b/amazing-silver-diamond-bracelet-black-background-fabulous-silver-diamond-bracelet-black-silk-background-282381157.jpg?w=992">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-light" id="gallery-necklaces">
+  <div class="container">
+    <h2 class="text-center">Necklaces</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://thumbs.dreamstime.com/b/gold-diamond-necklace-black-background-close-up-many-diamonds-54025434.jpg?w=768" alt="Necklace 1" class="img-fluid product-image">
+          <h4>Gold Diamond Necklace</h4>
+          <p>Stunning gold necklace with diamonds.</p>
+          <p>Price: $800.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Gold Diamond Necklace" data-price="800.00" data-image="https://thumbs.dreamstime.com/b/gold-diamond-necklace-black-background-close-up-many-diamonds-54025434.jpg?w=768">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://thumbs.dreamstime.com/b/pearl-necklace-luxury-black-background-32593578.jpg?w=768" alt="Necklace 2" class="img-fluid product-image">
+          <h4>Pearl Necklace</h4>
+          <p>Elegant pearl necklace with a classic design.</p>
+          <p>Price: $400.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Pearl Necklace" data-price="400.00" data-image="https://thumbs.dreamstime.com/b/pearl-necklace-luxury-black-background-32593578.jpg?w=768">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://thumbs.dreamstime.com/b/diamonds-necklace-close-up-round-black-background-39102867.jpg?w=768" alt="Necklace 3" class="img-fluid product-image">
+          <h4>Diamond Necklace</h4>
+          <p>Luxurious diamond necklace with a timeless appeal.</p>
+          <p>Price: $1,200.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Diamond Necklace" data-price="1200.00" data-image="https://thumbs.dreamstime.com/b/diamonds-necklace-close-up-round-black-background-39102867.jpg?w=768">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-light" id="gallery-earrings">
+  <div class="container">
+    <h2 class="text-center">Earrings</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREEWq8BoyfbFlfTU4tHo-C-Q2FjgIWCArlww&usqp=CAU" alt="Earring 1" class="img-fluid product-image">
+          <h4>Diamond Earrings</h4>
+          <p>Luxurious Diamond earrings with a modern twist.</p>
+          <p>Price: $900.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Diamond Earrings" data-price="900.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREEWq8BoyfbFlfTU4tHo-C-Q2FjgIWCArlww&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKSrWrPAZCIu4_PEWuhS7kkIRSW0eCvlVrhA&usqp=CAU" alt="Earring 2" class="img-fluid product-image">
+          <h4>Pearl Earrings</h4>
+          <p>Elegant pearl earrings with a classic design.</p>
+          <p>Price: $400.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Pearl Earrings" data-price="400.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKSrWrPAZCIu4_PEWuhS7kkIRSW0eCvlVrhA&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDJtk9CKqTJxbvGh1ciA--w5ZM9pFQ6ji15Q&usqp=CAU" alt="Earring 3" class="img-fluid product-image">
+          <h4>Gold Earrings</h4>
+          <p>Luxurious gold earrings with a timeless appeal.</p>
+          <p>Price: $700.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Gold Earrings" data-price="700.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDJtk9CKqTJxbvGh1ciA--w5ZM9pFQ6ji15Q&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-light" id="gallery-tiaras">
+  <div class="container">
+    <h2 class="text-center">Tiaras</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcf2SRxbyy4L2AKIquX7owerII7HtkwtoGzg&usqp=CAU" alt="Tiara 1" class="img-fluid product-image">
+          <h4>Gold Tiara</h4>
+          <p>Luxurious gold tiara with a modern twist.</p>
+          <p>Price: $1,500.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Gold Tiara" data-price="1500.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcf2SRxbyy4L2AKIquX7owerII7HtkwtoGzg&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1kGYMaGkDzo2E0TCWy15Sa04FbXF-4r4_jw&usqp=CAU" alt="Tiara 2" class="img-fluid product-image">
+          <h4>Pearl Tiara</h4>
+          <p>Elegant pearl tiara with intricate design.</p>
+          <p>Price: $1,200.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Pearl Tiara" data-price="1200.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1kGYMaGkDzo2E0TCWy15Sa04FbXF-4r4_jw&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCkdFtWOZ8GPxIm7iCyaZa3nPkhzB17Lzjvw&usqp=CAU" alt="Tiara 3" class="img-fluid product-image">
+          <h4>Diamond Tiara</h4>
+          <p>Luxurious diamond tiara with a timeless appeal.</p>
+          <p>Price: $1,000.00</p>
+          <button class="btn btn-primary add-to-cart" data-name="Diamond Tiara" data-price="1000.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCkdFtWOZ8GPxIm7iCyaZa3nPkhzB17Lzjvw&usqp=CAU">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="text-center">Contact Us</h2>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Your Phone Number" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="section bg-light" id="cart">
+        <div class="container">
+            <h2 class="text-center">Shopping Cart</h2>
+            <div class="cart-items">
+                <!-- Cart items will be added here dynamically through JavaScript -->
+            </div>
+            <div class="cart-total">
+                <h4>Total: $<span id="cart-total">0.00</span></h4>
+            </div>
+            <br>
+        <div class="text-center"> <!-- Add this container for centering -->
+            <button id="checkout-btn" class="btn btn-primary">Checkout</button>
+        </div>
+        </div>
+    </section>
+    <div class="modal" id="user-details-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Checkout</h5>
+                    <button type="button" class="close" data-dismiss="modal" id="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- User details form -->
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <!-- Add more fields as needed for user details -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3 style="text-align: center;">Contact Us</h3>
+        <p class="footer-info">Contact Information:</p>
+        <p class="footer-info">Address: 123 Main Street</p>
+        <p class="footer-info">Chennai, India</p>
+        <p class="footer-info">Phn.No: +1 (123) 456-7890</p>
+        <p class="footer-info">Email: JewelleryShop@gmail.com</p>
+      </div>
+      <div class="col-md-4">
+        <h3 style="text-align: center;">Follow Us</h3>
+        <div class="footer-social">
+          <h3>Connect with us on social media</h3>
+         <p style="text-align:center;"> 
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i> Facebook</a><br>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i> Twitter</a><br>
+            <a href="https://instagram.com/im_jesh_wanth?igshid=MWZjMTM2ODFkZg==" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a><br>
+         </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3 style="text-align: center;"> Newsletter </h3>
+        <p>Subscribe to our Jewellery Shop newsletter for the latest updates and promotions.</p>
+        <form>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Enter your email">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <p style="text-align: center;">&copy; 2023 Jewellery Shop. All rights reserved.</p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const cartItems = [];
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.getAttribute('data-name');
+                const productPrice = parseFloat(button.getAttribute('data-price'));
+                const productImage = button.getAttribute('data-image');
+                const item = {
+                    name: productName,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: 1, // Initialize quantity to 1
+                };
+                const existingItem = cartItems.find(cartItem => cartItem.name === item.name);
+                if (existingItem) {
+                    existingItem.quantity++; // Increase quantity
+                } else {
+                    cartItems.push(item); // Add the item to the cart
+                }
+                updateCartTotal();
+                displayCartItems();
+                alert(`${productName} added to cart`);
+            });
+        });
+        function removeItem(itemName) {
+            const indexToRemove = cartItems.findIndex(item => item.name === itemName);
+            if (indexToRemove !== -1) {
+                cartItems.splice(indexToRemove, 1);
+                updateCartTotal();
+                displayCartItems();
+                alert(`${itemName} removed from cart`);
+            }
+        }
+        function updateCartTotal() {
+            const cartTotalElement = document.getElementById('cart-total');
+            const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+        }
+        function displayCartItems() {
+            const cartItemsContainer = document.querySelector('.cart-items');
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-details">
+                        <img src="${item.image}" alt="${item.name}" class="img-fluid cart-item-image">
+                    </div>
+                    <div class="cart-item-info">
+                        <p>${item.name}</p>
+                        <p>$${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn decrease-quantity" data-item-name="${item.name}">-</button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button class="quantity-btn increase-quantity" data-item-name="${item.name}">+</button>
+                    </div>
+                    <div class="cart-item-remove">
+                        <button class="remove-item-btn" data-item-name="${item.name}">Remove</button>
+                    </div>
+                `;
+                const increaseQuantityButton = cartItemElement.querySelector('.increase-quantity');
+                increaseQuantityButton.addEventListener('click', () => {
+                    increaseQuantity(item.name);
+                });
+                const decreaseQuantityButton = cartItemElement.querySelector('.decrease-quantity');
+                decreaseQuantityButton.addEventListener('click', () => {
+                    decreaseQuantity(item.name);
+                });
+                const removeItemButton = cartItemElement.querySelector('.remove-item-btn');
+                removeItemButton.addEventListener('click', () => {
+                    removeItem(item.name);
+                });
+                const cartItemImage = cartItemElement.querySelector('.cart-item-image');
+                cartItemImage.style.width = '300px'; // Adjust the width as needed
+                cartItemImage.style.height = '200px'; // Adjust the height as needed
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+        }
+        function increaseQuantity(itemName) {
+            const itemToUpdate = cartItems.find(item => item.name === itemName);
+            if (itemToUpdate) {
+                itemToUpdate.quantity++;
+                updateCartTotal();
+                displayCartItems();
+                alert(`Quantity of ${itemName} increased to ${itemToUpdate.quantity}`);
+            }
+        }
+        function decreaseQuantity(itemName) {
+            const itemToUpdate = cartItems.find(item => item.name === itemName);
+            if (itemToUpdate && itemToUpdate.quantity > 1) {
+                itemToUpdate.quantity--;
+                updateCartTotal();
+                displayCartItems();
+                alert(`Quantity of ${itemName} decreased to ${itemToUpdate.quantity}`);
+            }
+        }
+        function checkout() {
+            if (cartItems.length === 0) {
+                alert('No items in the cart. Please add items to your cart before checking out.');
+            } else {
+                // Display the user details modal
+                const userDetailsModal = document.getElementById('user-details-modal');
+                userDetailsModal.style.display = 'block';
+            }
+        }
+        const checkoutButton = document.getElementById('checkout-btn');
+        checkoutButton.addEventListener('click', checkout);
+        const checkoutForm = document.getElementById('checkout-form');
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            if (cartItems.length > 0) {
+                alert(`Checkout successful! Thank you for your purchase.`);
+                clearCart();
+                clearUserDetails();
+                const userDetailsModal = document.getElementById('user-details-modal');
+                userDetailsModal.style.display = 'none';
+            } else {
+                alert('No items in the cart. Please add items to your cart before checking out.');
+            }
+        });
+        function clearCart() {
+            cartItems.length = 0; // Clear the cart array
+            updateCartTotal(); // Update the cart total
+            displayCartItems(); // Update the cart display
+        }
+        function clearUserDetails() {
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+        }
+        const closeModalButton = document.getElementById('close-modal');
+        closeModalButton.addEventListener('click', () => {
+            const userDetailsModal = document.getElementById('user-details-modal');
+            userDetailsModal.style.display = 'none';
+        });
+        displayCartItems();
+        updateCartTotal();
+    </script>
+</body>
+</html>
